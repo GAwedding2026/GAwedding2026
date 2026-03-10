@@ -2,14 +2,8 @@
 @import url(/scss/bootstrap-reboot.scss);
 @import url(/scss/bootstrap-grid.scss);
 /** 字型 **/
-@import url(/scss/bootstrap-reboot.scss);
-@import url(/scss/bootstrap-grid.scss);
-@font-face {
-  font-family: "Saudagar";
-  src: url("/fonts/Saudagar.ttf") format("ttf");
-}
 .logotype_en {
-  font-family: "Saudagar", "Italiana", sans-serif;
+  font-family: "Cinzel Decorative", "Libre Caslon Display", "Italiana", sans-serif;
 }
 
 .primary-font_td {
@@ -37,11 +31,11 @@
 }
 
 /** Color **/
-#hero, .name, .date {
+#hero, .name, .date, .year, .venue-name {
   color: #974315;
 }
 
-.rol, #rundown {
+.subhead, #rundown, #wedding p {
   color: #778899;
 }
 
@@ -53,6 +47,10 @@ p {
   background-color: #fcf2ed;
 }
 
+.text-color {
+  color: #9a875f;
+}
+
 /*排版*/
 .pt-6 {
   padding-top: 4rem;
@@ -63,11 +61,11 @@ p {
 }
 
 .pt-8 {
-  padding-top: 8rem;
+  padding-top: 7.875rem;
 }
 
 .pt-9 {
-  padding-top: 9rem;
+  padding-top: 8.5rem;
 }
 
 .pb-6 {
@@ -86,46 +84,77 @@ p {
   padding-bottom: 9rem;
 }
 
+.mt-6 {
+  margin-top: 6rem;
+}
+
 img {
   width: 100%;
 }
 
 /** Section **/
-#hero img {
+#hero .banner > img {
   display: block;
   border-radius: 60vw 60vw 0 0;
+  box-shadow: #e9d4bd 8px 8px 0px;
+  z-index: -99;
+}
+
+.hero-icon {
+  position: relative;
+  top: 2.875rem;
+  right: 1rem;
+  display: inline-block;
   z-index: -100;
 }
 
-#wedding .container > img {
+#wedding img {
   display: block;
   margin: 0 auto;
-  width: clamp(350px, 60vw, 768px);
+  width: clamp(100px, 50vw, 768px);
 }
 
+.gallery {
+  align-items: end;
+}
 .gallery .row {
   position: relative;
 }
-.gallery .sticky {
+.gallery .photo-background > img {
   display: block;
+  box-shadow: #e9d4bd 8px 8px 0px;
+}
+.gallery .img-border img {
+  border: #974315 5px solid;
+  display: block;
+}
+
+#when p {
+  /*字體*/
+  --min-size: 16;
+  --max-size: 24;
+  --font-size: calc(
+    (var(--min-size) * 1px) + (var(--max-size) - var(--min-size)) * ((100cqw - 320px) / (1920 - 320)));
+  font-size: clamp(var(--min-size) * 1px, var(--font-size), var(--max-size) * 1px);
+}
+
+.hero-title {
   position: absolute;
-  bottom: -10%;
-  left: 50%;
+  top: 4vh;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
 }
 
 .title {
-  --min-size: 128;
-  --max-size: 206;
+  --min-size: 90;
+  --max-size: 110;
   --font-size: calc(
-    (var(--min-size) * 1px) + (var(--max-size) - var(--min-size)) *
+    (var(--min-size) * 0.5px) + (var(--max-size) - var(--min-size)) *
       ((100cqw - 320px) / (1920 - 320))
   );
-  font-size: clamp(var(--min-size) * 1px, var(--font-size), var(--max-size) * 1px);
-  line-height: clamp(112px, 11vw, 200px);
-  position: absolute;
-  top: 10vw;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
+  font-size: clamp(var(--min-size) * 0.8px, var(--font-size), var(--max-size) * 1px);
+  line-height: clamp(var(--min-size) * 0.7px, var(--font-size), var(--max-size) * 1px);
+  text-shadow: #fcf2ed 1px 1px 0px;
 }
 .title span {
   font-size: 0.5em;
@@ -138,297 +167,50 @@ img {
 }
 .subtitle {
   font-size: 2.5rem;
-  text-align: right;
+  height: 2.25rem;
 }
 
 .date {
   /*字體*/
   --min-size: 96;
-  --max-size: 128;
+  --max-size: 100;
   --font-size: calc(
-    (var(--min-size) * 1px) + (var(--max-size) - var(--min-size)) * ((100cqw - 320px) / (1920 - 320)));
-  font-size: clamp(var(--min-size) * 1px, var(--font-size), var(--max-size) * 1px);
-  /*位置*/
-  position: relative;
-  align-items: end; /* 子元素靠下對齊 */
-  height: 100%; /* 需設定高度 */
-  width: 100%;
-  text-align: center;
-  padding-right: 2rem;
+    (var(--min-size) * 0.25px) + (var(--max-size) - var(--min-size)) * ((100cqw - 320px) / (1920 - 320)));
+  font-size: clamp(var(--min-size) * 0.8px, var(--font-size), var(--max-size) * 1px);
+  line-height: calc(var(--min-size) * 0.5px + (var(--max-size) - var(--min-size)) * (100cqw - 320px) / 1600);
 }
 
-.month {
-  /*位置*/
-}
-.month::after {
-  content: "";
-  width: 1px;
-  height: 100%;
-  box-sizing: border-box;
-  border: 0.9px #974315 solid;
-  transform: rotateZ(45deg);
-  position: absolute;
-  left: 48%;
-  bottom: -18px;
-}
-
-.day {
-  position: absolute;
-  top: 58px;
-  left: 47%;
-}
-
-.week {
-  --min-size: 24;
-  --max-size: 32;
-  --font-size: calc(
-    (var(--min-size) * 1px) + (var(--max-size) - var(--min-size)) *
-      ((100cqw - 320px) / (1920 - 320))
-  );
-  font-size: clamp(var(--min-size) * 1px, var(--font-size), var(--max-size) * 1px);
-  line-height: clamp(32px, 10vw, 32px);
-  position: relative;
-  left: 3.5rem;
-  bottom: 30px;
-}
-
-#rundown .row {
-  height: 54px;
-}
-
-.time {
-  font-size: calc(2.5rem + 1.5vw);
-}
-.time span {
-  font-size: 1.375rem;
-}
-
-.rundown-detail {
-  height: 100px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-
-/** 字型 **/
-@font-face {
-  font-family: "Saudagar";
-  src: url("/fonts/Saudagar.ttf") format("ttf");
-}
-.italiana-regular {
-  font-family: "Saudagar", "Italiana", sans-serif;
-}
-
-.chiron-sung-hk {
-  font-family: "Chiron Sung HK", serif;
-}
-
-.monsieur-la-doulaise-regular {
-  font-family: "Monsieur La Doulaise", cursive;
-}
-
-.times-new-roman {
-  font-family: "Times New Roman", Times, serif;
-}
-
-/** Color **/
-#hero, .name, .date {
-  color: #974315;
-}
-
-.rol, .b, .c, .rundown {
-  color: #778899;
-}
-
-.rol, .b, .c .rundown {
-  color: #8d957e;
-}
-
-.bg-color {
-  background-color: #fcf2ed;
-}
-
-/*排版*/
-.pt-6 {
-  padding-top: 4rem;
-}
-
-.pt-7 {
-  padding-top: 6rem;
-}
-
-.pt-8 {
-  padding-top: 8rem;
-}
-
-.pt-9 {
-  padding-top: 9rem;
-}
-
-.pb-6 {
-  padding-bottom: 4rem;
-}
-
-.pb-7 {
-  padding-bottom: 6rem;
-}
-
-.pb-8 {
-  padding-bottom: 8rem;
-}
-
-.pb-9 {
-  padding-bottom: 9rem;
-}
-
-img {
-  width: 100%;
-}
-
-/** Section **/
-#hero img {
-  display: block;
-  border-radius: 60vw 60vw 0 0;
-  z-index: -100;
-}
-
-#wedding .container > img {
-  display: block;
-  margin: 0 auto;
-  width: clamp(460px, 60vw, 768px);
-}
-
-.gallery .row {
-  position: relative;
-}
-.gallery .sticky {
-  display: block;
-  position: absolute;
-  bottom: -10%;
-  left: 50%;
-}
-
-.title {
-  --min-size: 128;
-  --max-size: 206;
-  --font-size: calc(
-    (var(--min-size) * 1px) + (var(--max-size) - var(--min-size)) *
-      ((100cqw - 320px) / (1920 - 320))
-  );
-  font-size: clamp(var(--min-size) * 1px, var(--font-size), var(--max-size) * 1px);
-  line-height: clamp(112px, 11vw, 200px);
-  position: absolute;
-  top: 10vw;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
-}
-.title span {
-  font-size: 0.5em;
-}
-
-@media (min-width: 768px) {
-  .title {
-    position: static;
-  }
-}
-.subtitle {
-  font-size: 2.5rem;
-  text-align: right;
-}
-
-.b {
-  font-size: 0.875rem;
-}
-
-.c {
-  font-size: 0.625rem;
-  line-height: 1.125rem;
-}
-
-#when > .row {
-  position: relative;
-  align-items: center;
-  justify-content: space-around;
-  margin: 0 auto;
-}
-
-.month, .day {
+.year {
   /*字體*/
-  --min-size: 96;
-  --max-size: 128;
+  --min-size: 54;
+  --max-size: 64;
   --font-size: calc(
-    (var(--min-size) * 1px) + (var(--max-size) - var(--min-size)) * ((100cqw - 320px) / (1920 - 320)));
-  font-size: clamp(var(--min-size) * 1px, var(--font-size), var(--max-size) * 1px);
-  /*位置*/
-  text-align: right;
-  display: flex;
-  position: relative;
-}
-
-.month {
-  line-height: clamp(60px, 10vw, 120px);
-  /*位置*/
-  align-items: end; /* 子元素靠下對齊 */
-  height: 100%; /* 需設定高度 */
-}
-.month::after {
-  content: "";
-  width: 1px;
-  height: 100%;
-  box-sizing: border-box;
-  border: 0.9px #974315 solid;
-  transform: rotateZ(45deg);
-  position: absolute;
-  left: 92px;
-  bottom: -5px;
-}
-
-.day {
-  line-height: clamp(85px, 11vw, 120px);
-  /*位置*/
-  position: relative;
-  align-items: top; /* 子元素靠上對齊 */
-  height: 100%; /* 需設定高度 */
-}
-.day::before {
-  content: "";
-  width: 1px;
-  height: 100%;
-  box-sizing: border-box;
-  border: 0.9px #974315 solid;
-  transform: rotateZ(45deg);
-  position: absolute;
-  left: 34px;
-  top: -15px;
-}
-
-.week {
-  --min-size: 24;
-  --max-size: 32;
-  --font-size: calc(
-    (var(--min-size) * 1px) + (var(--max-size) - var(--min-size)) *
-      ((100cqw - 320px) / (1920 - 320))
-  );
-  font-size: clamp(var(--min-size) * 1px, var(--font-size), var(--max-size) * 1px);
-  line-height: clamp(32px, 10vw, 32px);
-  position: relative;
-  left: 2rem;
-  bottom: 5px;
-}
-
-.rundown {
-  justify-content: center;
-}
-.rundown .row {
-  height: 3.5rem;
-  align-content: stretch;
+    (var(--min-size) * 0.25px) + (var(--max-size) - var(--min-size)) * ((100cqw - 320px) / (1920 - 320)));
+  font-size: clamp(var(--min-size) * 0.8px, var(--font-size), var(--max-size) * 1px);
 }
 
 .time {
-  font-size: calc(3.25rem + 1.5vw);
-  line-height: 3.5rem;
+  font-size: calc(2rem + 1.25vw);
 }
 .time span {
   font-size: 1.375rem;
+}
+.time {
+  line-height: 2rem;
+}
+
+.rundown-icon {
+  margin: 0 auto;
+}
+
+.venue-name {
+  /*字體*/
+  --min-size: 42;
+  --max-size: 64;
+  --font-size: calc(
+    (var(--min-size) * 0.25px) + (var(--max-size) - var(--min-size)) * ((100cqw - 320px) / (1920 - 320)));
+  font-size: clamp(var(--min-size) * 0.8px, var(--font-size), var(--max-size) * 1px);
+}
+.venue-name p {
+  margin-bottom: 0;
 }/*# sourceMappingURL=all.css.map */
