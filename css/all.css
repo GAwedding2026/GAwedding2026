@@ -1,13 +1,13 @@
 @charset "UTF-8";
-@import url(/scss/bootstrap-reboot.scss);
-@import url(/scss/bootstrap-grid.scss);
+@import url(/bootstrap/bootstrap-reboot.scss);
+@import url(/bootstrap/bootstrap-grid.scss);
 /** 字型 **/
 .logotype_en {
   font-family: "Cinzel Decorative", "Libre Caslon Display", "Italiana", sans-serif;
 }
 
 .primary-font_td {
-  font-family: "Chiron Sung HK", serif;
+  font-family: "Cinzel Decorative", serif;
 }
 
 .primary-font_en {
